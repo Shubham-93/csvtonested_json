@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript" src="nth-json.js"></script>
+
+<link rel="stylesheet" type="text/css" href="custom.css">
+<body>
+  <div>
+    <h4 class="title">CSV to Nested Json Convertor</h4>
+  </div>
+  <div class="container">
+    <div id="navi" style="">
+
+      <div class="navi-title">
+        <span align="center">Copy your data Data here</span><br>
+        <span>Select input type: <input type="radio" name="input" value='csv' checked="true" /> csv
+        <input type="radio" name="input" value='json'/>Json </span>
+      </div>
+
+      <!-- <div class="nested-content"> -->
+        <textarea name="styled-textarea" id="styled">Enter your csv here...</textarea>
+      <!-- </div> -->
+      <!-- <button id="convert">Convert to JSON</button> -->
+    </div>
+    <div id="handler" style=""></div>
+    <div id="content" style="">
+
+      <div class="nested-title">
+        <span align="center">Generated Json</span><br>
+        <span>Select one: <input type="radio" name="json" value='nested' /> nested Json
+        <input type="radio" name="json" value='json' checked="true"/>Simple Json </span>
+      </div>
+
+      <!-- <div class="nested-content"> -->
+        <textarea id="json" class="text"></textarea>
+      <!-- </div> -->
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  var $navi = $('#navi'), // width: 20%
+    $handler = $('#handler'), // right: 79%
+    $content = $('#content'), // width: 79%
+    $foo = $('#foo'),
+    winWidth = $(window).width(),
+    handlerProz = 50,
+    handlerWidth = $handler.width();
+    /*change the value of handlerProz to change the initial position of handler*/
+    // console.log("winwindow",handlerProz);
+  $(function() {
+      updateContainer(100-handlerProz);
+
+      $handler.on('mousedown mouseup mouseover', function(event) {
+          var $this = $(this);
+          if (event.type == 'mousedown') {
+              $(document).on('mousemove', function(event2) {
+                  handlerProz = pixl2proz(event2.pageX, winWidth);
+                  if(handlerProz > 80) handlerProz=80;
+                  else if(handlerProz < 20) handlerProz=20;
+                  updateContainer(100 - handlerProz);
+              });
+          } else if (event.type == 'mouseup') {
+              $(document).off('mousemove');
+          } else if (event.type == 'mouseover') {
+              $this.css('cursor', 'col-resize');
+          }
+      });
+
+      $(window).resize(function() {
+          winWidth = $(window).width();
+          updateContainer(100-handlerProz);
+      });
+
+  });
+
+  /*function updateContainer(x) {
+      $handler.css('right', (proz2pixl(x, winWidth) - handlerWidth / 2) + 'px');
+      return false;
+  };*/
+
+  function updateContainer(x) {
+      $navi.css('width', (proz2pixl(100-x-.5, winWidth) - handlerWidth / 2) + 'px');
+      $handler.css('right', (proz2pixl(x, winWidth) - handlerWidth / 2) + 'px');
+      $content.css('width', (proz2pixl(x, winWidth) - handlerWidth / 2) + 'px');
+      return false;
+  };
+
+  function proz2pixl(input, max) {
+      return input / 100 * max;
+  };
+
+  function pixl2proz(input, max) {
+      return input / max * 100;
+  };
+</script>
+</html>

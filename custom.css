@@ -1,0 +1,83 @@
+#navi {
+    position: fixed;
+    /*top: 0;*/
+    /*left: 0;*/
+    height: 99%;
+    width: 97%;
+    /*background-color: green;*/
+    overflow-y: auto;
+}
+
+#content {
+    position: fixed;
+    /*top: 0;*/
+    right: 0;
+    height: 99%;
+    width: 75%;
+    /*background-color: yellow;*/
+    /*margin-right: 41px;*/
+    /*overflow-y: scroll;*/
+}
+
+#handler { 
+  width: 6px; 
+  height: 99%;
+  padding: 2px 0; 
+  margin-top: 18px;
+  cursor: col-resize; 
+  position: absolute; 
+  /*top: 0;*/
+  right: 79%;
+  background: url(handle-v.png) rgb(66,66,66) 1px 50% no-repeat; 
+}
+
+body {
+  overflow: hidden;
+}
+.title {
+  text-align: center;
+}
+.navi-title {
+  width: 100%;
+  text-align: center;
+}
+
+.navi-content {
+  position: relative;
+  text-align: center;
+}
+.nested-title {
+  width: 100%;
+  text-align: center;
+}
+
+.nested-content {
+  position: relative;
+  text-align: center;
+}
+
+textarea#styled {
+  width: 97%;
+  height: 85%;
+  /*overflow:hidden; */
+  position: relative;
+  border: 3px solid #cccccc;
+  padding: 5px;
+  font-family: Tahoma, sans-serif;
+  /*background-image: url(bg.gif);*/
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+textarea#json {
+  width: 97%;
+  height: 85%;
+  /*overflow:hidden; */
+  position: relative;
+  border: 3px solid #cccccc;
+  padding: 5px;
+  font-family: Tahoma, sans-serif;
+  /*background-image: url(bg.gif);*/
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
